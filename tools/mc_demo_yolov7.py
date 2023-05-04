@@ -8,6 +8,10 @@ import torch
 import torch.backends.cudnn as cudnn
 from numpy import random
 
+sys.path.insert(0, './yolov7')
+sys.path.append('.')
+
+
 from yolov7.models.experimental import attempt_load
 from yolov7.utils.datasets import LoadStreams, LoadImages
 from yolov7.utils.general import check_img_size, check_requirements, check_imshow, non_max_suppression, \
@@ -18,10 +22,6 @@ from yolov7.utils.torch_utils import select_device, load_classifier, time_synchr
 
 from tracker.mc_bot_sort import BoTSORT
 from tracker.tracking_utils.timer import Timer
-
-sys.path.insert(0, './yolov7')
-sys.path.append('.')
-
 def write_results(filename, results):
     save_format = '{frame},{id},{x1},{y1},{w},{h},{s},-1,-1,-1\n'
     with open(filename, 'w') as f:
